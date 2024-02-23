@@ -1,1 +1,2 @@
-print("hello word")
+print("hello world")
+print("Testando o Codespasce")
