@@ -14,11 +14,11 @@ class EquaçãoQuadrática:
         if x > 0: self.__h = x
         else: raise ValueError("Número inválido.")
     def getA(self):
-        return self.__b
+        return self.__a
     def getB(self):
-        return self.__h
+        return self.__b
     def getC(self):
-        return self.__h
+        return self.__c
     def calcDelta(self):
         return self.__b ** 2 * 4 * self.__a * self.__c
     def TemRaizesReais(self):

@@ -4,10 +4,10 @@ class Frete:
         self.__p = p
     def set_distancia(self, x):
         if x > 0: self.__d = x
-        else: raise ValueError()
+        else: raise ValueError("Número inválido.")
     def setPeso(self, x):
         if x > 0: self.__p = x
-        else: raise ValueError()
+        else: raise ValueError("Número inválido.")
     def getDistancia(self):
         return self.__d
     def getPeso(self):
