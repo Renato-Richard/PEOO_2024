@@ -1,6 +1,6 @@
 class Jogador:
     def __init__(self, nome: str, camisa: int, gols: int):
-        self.__nome = nome
+        self.__nome = ""
         self.__camisa = camisa
         self.__gols = gols
         if self.__nome != "": self.__nome = nome
