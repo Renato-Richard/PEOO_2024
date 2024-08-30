@@ -14,15 +14,23 @@ class Paciente:
         else: raise ValueError("O número de telefone está vazio!")
         if self.__nascimento != "": self.__nascimento = nasc
         else: raise ValueError("A data de nascimento está vazia!")
-    def idade(self, f):
-        hoje = datetime.now()
+    def idade(self, passado):
+        presente = datetime.now()
+        nascimento = datetime.strptime(passado, "%d/%m/%Y")
+        anos = (presente - nascimento).days // 365
+        meses = ((presente - nascimento).days % 365) // 30
+        return f"A idade do paciente é {anos} anos e {meses} meses"
 class UI:
     @staticmethod
     def menu():
-        pass
+        print("Digite os dados do paciente:\n1: Nome\n2: CPF\n3: Telefone\n4: Nascimento")
+        return int(input())
     @staticmethod
     def main():
-        pass
-    @staticmethod
-    def metodo():
-        pass
+        input("Informe o nome do paciente: ")
+        input("Informe o seu CPF: ")
+        input("Informe o seu telefone: ")
+        passado = input("Infome a sua data de nascimento: ")
+        p = Paciente()
+        print(p.idade(passado))
+UI.main()
