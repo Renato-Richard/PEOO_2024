@@ -39,8 +39,7 @@ class UI:
         nascimento = input("Infome a sua data de nascimento: ")
         p = Paciente(nome, cpf, telefone, nascimento)
         print(p.idade(nascimento))
-        return p
     @staticmethod
     def info(p):
-        print(p)
+        print(Paciente)
 UI.main()

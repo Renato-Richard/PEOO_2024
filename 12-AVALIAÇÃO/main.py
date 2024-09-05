@@ -85,8 +85,8 @@ class UI:
         print("Digite 1 para inserir uma avaliação;\nDigite 2 para listar as avaliações;\nDigite 3 para atualizar alguma avaliação;\nDigite 4 para excluir alguma avaliação;\nDigite 5 para conferir as avaliações dos próximos dias.")
         return int(input("Insira um dígito: "))
     @staticmethod
-    def Listar(a):
-        print(a.listar())
+    def Listar():
+        print(Avaliacoes.listar())
     @staticmethod
     def Inserir():
         Id = int(input("Insira o ID da avaliação: "))
@@ -96,12 +96,14 @@ class UI:
         a = Avaliacao(Id, Disciplina, Local, Data)
         Avaliacoes.inserir(a)
     @staticmethod
-    def Atualizar(a):
-        print(a.atualizar())
+    def Atualizar():
+        Id = int(input("Insira o ID da avaliação: "))
+        print(Avaliacoes.atualizar(Id))
     @staticmethod
-    def Excluir(a):
-        print(a.excluir())
+    def Excluir():
+        Id = int(input("Insira o ID da avaliação: "))
+        print(Avaliacoes.excluir(Id))
     @staticmethod
-    def ProximosDias(a):
-        print(a.proximosDias())
+    def ProximosDias():
+        print(Avaliacoes.proximosDias())
 UI.Main()
