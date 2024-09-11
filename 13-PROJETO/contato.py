@@ -12,6 +12,9 @@ class Contato:
         else: raise ValueError("Telefone inválido.")
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__telefone}"
+
+# acho qu tá ok
+
 class Contatos:
     contatos = []
     @classmethod
@@ -32,14 +35,14 @@ class Contatos:
         cls.abrir()
         for c in cls.contatos:
             if c.id == id: return c
-        return None 
+        return None
     @classmethod
     def atualizar(cls, obj):
         c = cls.listar_Id(obj.id)
         if c != None:
-            c.d = obj.d
-            c.l = obj.l
-            c.dt = obj.dt
+            c.id = obj.id
+            c.nome = obj.nome
+            c.telefone = obj.telefone
         cls.salvar()
     @classmethod
     def excluir(cls, obj):
@@ -50,15 +53,15 @@ class Contatos:
     @classmethod
     def salvar(cls):  
         with open("avaliacao.json", mode = "w") as arquivo:
-            json.dump(cls.__compromissos, arquivo, default = vars) 
+            json.dump(cls.contatos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
-        cls.__compromissos = []
+        cls.contatos = []
         try: 
-            with open("avaliacao.json", mode = "r") as arquivo:
+            with open("contatos.json", mode = "r") as arquivo:
                 texto = json.load(arquivo)
                 for obj in texto:
                     c = Contato(obj["id"], obj["nome"], obj["telefone"])
-                cls.__compromissos.append(c)
+                cls.contatos.append(c)
         except FileNotFoundError:
             pass
