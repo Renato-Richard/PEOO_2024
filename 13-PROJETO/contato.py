@@ -1,4 +1,5 @@
 import json
+from views import View
 class Contato:
     def __init__(self, id: int, nome: str, telefone: str):
         self.__id = 0
@@ -12,9 +13,6 @@ class Contato:
         else: raise ValueError("Telefone inválido.")
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__telefone}"
-
-# acho qu tá ok
-
 class Contatos:
     contatos = []
     @classmethod
@@ -52,7 +50,7 @@ class Contatos:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("avaliacao.json", mode = "w") as arquivo:
+        with open("contatos.json", mode = "w") as arquivo:
             json.dump(cls.contatos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
@@ -65,3 +63,41 @@ class Contatos:
                 cls.contatos.append(c)
         except FileNotFoundError:
             pass
+class UI:
+    @staticmethod
+    def Menu():
+        print("Digite 1 para inserir um contato;\nDigite 2 para listar os contatos;\nDigite 3 para atualizar algum contato;\nDigite 4 para excluir algum contato")
+        return int(input("Insira um dígito: "))
+    @staticmethod
+    def Main():
+        op = 0
+        while op != 6:
+            op = UI.Menu()
+            if op == 1: UI.Inserir()
+            if op == 2: UI.Listar()
+            if op == 3: UI.Atualizar()
+            if op == 4: UI.Excluir()
+        print("Você terminou a operação.")
+    @staticmethod
+    def Listar():
+        print(Contatos.listar())
+    @staticmethod
+    def Inserir(Id, Disciplina, Local, Data):
+        Id = int(input("Insira o ID da avaliação: "))
+        Disciplina = input("Insira o nome da disciplina: ")
+        Local = input("Insira o local da avaliação: ")
+        Data = input("Insira a data da avaliação: ")
+    @staticmethod
+    def Atualizar():
+        Id = int(input("Insira o ID da avaliação: "))
+        print(Contatos.atualizar(Id))
+    @staticmethod
+    def Excluir():
+        Id = int(input("Insira o ID da avaliação: "))
+        print(Contatos.excluir(Id))
+UI.Main()
+# class View:
+#     @staticmethod
+#     def inserir_ui():
+#         a = Contato(UI.Inserir(Id, Disciplina, Local, Data))
+#         Contatos.inserir(a)

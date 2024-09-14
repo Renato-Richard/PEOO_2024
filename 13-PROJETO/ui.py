@@ -1,4 +1,5 @@
 from contato import Contato, Contatos
+from views import view
 class UI:
     @staticmethod
     def Menu():

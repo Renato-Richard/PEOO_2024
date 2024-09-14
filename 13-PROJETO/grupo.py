@@ -45,16 +45,16 @@ class Grupos:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("avaliacao.json", mode = "w") as arquivo:
+        with open("membros.json", mode = "w") as arquivo:
             json.dump(cls.contatos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
         cls.grupos = []
         try: 
-            with open("contatos.json", mode = "r") as arquivo:
+            with open("membros.json", mode = "r") as arquivo:
                 texto = json.load(arquivo)
                 for obj in texto:
-                    c = Grupo(obj["id"], obj["nome"], obj["telefone"])
+                    c = Grupo(obj["id"], obj["nome"])
             cls.grupos.append(c)
         except FileNotFoundError:
             pass
