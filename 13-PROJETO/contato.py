@@ -1,18 +1,15 @@
 import json
-from views import View
 class Contato:
     def __init__(self, id: int, nome: str, telefone: str):
-        self.__id = 0
-        self.__nome = ""
-        self.__telefone = ""
-        if id > 0: self.__id = id
-        else: raise ValueError("ID inválido.")
-        if nome != "": self.__nome = nome
+        self.id = id
+        self.nome = ""
+        self.telefone = ""
+        if nome != "": self.nome = nome
         else: raise ValueError("Nome inválido.")
-        if telefone != "": self.__telefone = telefone
+        if telefone != "": self.telefone = telefone
         else: raise ValueError("Telefone inválido.")
     def __str__(self):
-        return f"{self.__id} - {self.__nome} - {self.__telefone}"
+        return f"{self.id} - {self.nome} - {self.telefone}"
 class Contatos:
     contatos = []
     @classmethod
@@ -21,7 +18,7 @@ class Contatos:
         m = 0
         for c in cls.contatos:
             if c.id > m: m = c.id
-        obj.id = m + 1  
+        obj.id = m + 1
         cls.contatos.append(obj)
         cls.salvar()
     @classmethod
@@ -50,7 +47,7 @@ class Contatos:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("contatos.json", mode = "w") as arquivo:
+        with open("./contatos.json", mode = "w") as arquivo:
             json.dump(cls.contatos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
@@ -70,6 +67,7 @@ class UI:
         return int(input("Insira um dígito: "))
     @staticmethod
     def Main():
+        print("Bem-vindo ao Sahto Mensenger!\n\nPrecisamos inicialmente criar o seu contato.\n\n")
         op = 0
         while op != 6:
             op = UI.Menu()
@@ -80,24 +78,24 @@ class UI:
         print("Você terminou a operação.")
     @staticmethod
     def Listar():
-        print(Contatos.listar())
+        for c in Contatos.listar():
+            print(c)
     @staticmethod
-    def Inserir(Id, Disciplina, Local, Data):
-        Id = int(input("Insira o ID da avaliação: "))
-        Disciplina = input("Insira o nome da disciplina: ")
-        Local = input("Insira o local da avaliação: ")
-        Data = input("Insira a data da avaliação: ")
+    def Inserir():
+        Nome = input("Insira o seu nome: ")
+        Telefone = input("Insira o seu telefone: ")
+        c = Contato(0, Nome, Telefone)
+        Contatos.inserir(c)
     @staticmethod
     def Atualizar():
-        Id = int(input("Insira o ID da avaliação: "))
-        print(Contatos.atualizar(Id))
+        Id = int(input("Insira o ID do contato: "))
+        Nome = input("Insira o seu novo nome: ")
+        Telefone = input("Insira o seu novo telefone: ")
+        c = Contato(Id, Nome, Telefone)
+        Contatos.atualizar(c)
     @staticmethod
     def Excluir():
-        Id = int(input("Insira o ID da avaliação: "))
-        print(Contatos.excluir(Id))
+        Id = int(input("Insira o ID do contato: "))
+        c = Contato(Id, 0, 0)
+        Contatos.excluir(c)
 UI.Main()
-# class View:
-#     @staticmethod
-#     def inserir_ui():
-#         a = Contato(UI.Inserir(Id, Disciplina, Local, Data))
-#         Contatos.inserir(a)
