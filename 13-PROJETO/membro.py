@@ -1,10 +1,10 @@
 import json
-from contato import Contato
-from grupo import Grupo, Grupos
 class Membro:
     def __init__(self, id: int, grupo,):
-        self.__id = id
-        self.__grupo = grupo
+        self.id = id
+        self.grupo = grupo
+    def __str__(self):
+        return f"{self.id} - {self.grupo}"
 class Membros:
     membros = []
     @classmethod
@@ -13,7 +13,7 @@ class Membros:
         m = 0
         for c in cls.membros:
             if c.id > m: m = c.id
-        obj.id = m + 1  
+        obj.id = m + 1
         cls.membros.append(obj)
         cls.salvar()
     @classmethod
@@ -31,6 +31,7 @@ class Membros:
         c = cls.listar_Id(obj.id)
         if c != None:
             c.id = obj.id
+            c.grupo = obj.grupo
         cls.salvar()
     @classmethod
     def excluir(cls, obj):
@@ -40,7 +41,7 @@ class Membros:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("membros.json", mode = "w") as arquivo:
+        with open("./membros.json", mode = "w") as arquivo:
             json.dump(cls.membros, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
@@ -49,7 +50,7 @@ class Membros:
             with open("membros.json", mode = "r") as arquivo:
                 texto = json.load(arquivo)
                 for obj in texto:
-                    m = Membro(obj["id"])
+                    m = Membro(obj["id"], obj["grupo"])
                 cls.membros.append(m)
         except FileNotFoundError:
             pass

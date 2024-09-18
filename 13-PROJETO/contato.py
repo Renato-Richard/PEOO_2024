@@ -47,55 +47,16 @@ class Contatos:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("./contatos.json", mode = "w") as arquivo:
+        with open("13-PROJETO\contatos.json", mode = "w") as arquivo:
             json.dump(cls.contatos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
         cls.contatos = []
         try: 
-            with open("contatos.json", mode = "r") as arquivo:
+            with open("13-PROJETO\contatos.json", mode = "r") as arquivo:
                 texto = json.load(arquivo)
                 for obj in texto:
                     c = Contato(obj["id"], obj["nome"], obj["telefone"])
                 cls.contatos.append(c)
         except FileNotFoundError:
             pass
-class UI:
-    @staticmethod
-    def Menu():
-        print("Digite 1 para inserir um contato;\nDigite 2 para listar os contatos;\nDigite 3 para atualizar algum contato;\nDigite 4 para excluir algum contato")
-        return int(input("Insira um dígito: "))
-    @staticmethod
-    def Main():
-        print("Bem-vindo ao Sahto Mensenger!\n\nPrecisamos inicialmente criar o seu contato.\n\n")
-        op = 0
-        while op != 6:
-            op = UI.Menu()
-            if op == 1: UI.Inserir()
-            if op == 2: UI.Listar()
-            if op == 3: UI.Atualizar()
-            if op == 4: UI.Excluir()
-        print("Você terminou a operação.")
-    @staticmethod
-    def Listar():
-        for c in Contatos.listar():
-            print(c)
-    @staticmethod
-    def Inserir():
-        Nome = input("Insira o seu nome: ")
-        Telefone = input("Insira o seu telefone: ")
-        c = Contato(0, Nome, Telefone)
-        Contatos.inserir(c)
-    @staticmethod
-    def Atualizar():
-        Id = int(input("Insira o ID do contato: "))
-        Nome = input("Insira o seu novo nome: ")
-        Telefone = input("Insira o seu novo telefone: ")
-        c = Contato(Id, Nome, Telefone)
-        Contatos.atualizar(c)
-    @staticmethod
-    def Excluir():
-        Id = int(input("Insira o ID do contato: "))
-        c = Contato(Id, 0, 0)
-        Contatos.excluir(c)
-UI.Main()

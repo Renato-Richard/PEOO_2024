@@ -1,7 +1,14 @@
 from contato import Contato, Contatos
-from grupo import Grupo, Grupos
-from membro import Membro, Membros
 class View:
     @staticmethod
-    def contato_inserir(id, nome, telefone):
-        Contatos.inserir(id, nome, telefone)
+    def inserir(nome: str, telefone: str):
+        c = Contato(0, nome, telefone)
+        Contatos.inserir(c)
+    @staticmethod
+    def atualizar(id: int, nome: str, telefone: str):
+        c = Contato(id, nome, telefone)
+        Contatos.atualizar(c)
+    @staticmethod
+    def excluir(id: int):
+        c = Contato(id, 0, 0)
+        Contatos.excluir(c)

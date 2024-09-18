@@ -1,0 +1,16 @@
+Contato:
+	id;
+	nome;
+	telefone;
+	data de nascimento;
+Membro:
+	id;
+	verificação adm;
+
+Grupo:
+	id;
+	nome;
+	descrição;
+	membros;
+	administrador;
+	categoria
