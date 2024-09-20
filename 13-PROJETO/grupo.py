@@ -1,14 +1,19 @@
 import json
 class Grupo:
-    def __init__(self, id: int, nome: str):
-        self.__id = 0
-        self.__nome = ""
-        if id > 0: self.__id = 0
-        else: raise ValueError("ID inválido.")
-        if nome != "": self.__nome = nome
+    def __init__(self, id: int, nome: str, descricao: str, categoria: str):
+        self.id = id
+        self.nome = ""
+        self.descricao = ""
+        self.categoria = ""
+        # self.membros = membros
+        if nome != "": self.nome = nome
         else: raise ValueError("Nome do Grupo inválido.")
+        if descricao != "": self.descricao = descricao
+        else: raise ValueError("Descrição inválida.")
+        if categoria != "": self.categoria = categoria
+        else: raise ValueError("Categoria inválida.")
     def __str__(self):
-        return f"{self.__id} -  {self.__nome}"
+        return f"{self.id} - {self.nome} - {self.descricao} - {self.categoria}"
 class Grupos:
     grupos = []
     @classmethod
@@ -36,6 +41,8 @@ class Grupos:
         if c != None:
             c.id = obj.id
             c.nome = obj.nome
+            c.descricao = obj.descricao
+            c.categoria = obj.categoria
         cls.salvar()
     @classmethod
     def excluir(cls, obj):
@@ -45,16 +52,16 @@ class Grupos:
         cls.salvar()
     @classmethod
     def salvar(cls):  
-        with open("membros.json", mode = "w") as arquivo:
-            json.dump(cls.contatos, arquivo, default = vars) 
+        with open("13-PROJETO\grupos.json", mode = "w") as arquivo:
+            json.dump(cls.grupos, arquivo, default = vars) 
     @classmethod
     def abrir(cls):
         cls.grupos = []
         try: 
-            with open("membros.json", mode = "r") as arquivo:
+            with open("13-PROJETO\grupos.json", mode = "r") as arquivo:
                 texto = json.load(arquivo)
                 for obj in texto:
-                    c = Grupo(obj["id"], obj["nome"])
+                    c = Grupo(obj["id"], obj["nome"], obj["descricao"], obj["categoria"])
             cls.grupos.append(c)
         except FileNotFoundError:
             pass
