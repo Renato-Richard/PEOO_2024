@@ -5,7 +5,6 @@ class Grupo:
         self.nome = ""
         self.descricao = ""
         self.categoria = ""
-        # self.membros = membros
         if nome != "": self.nome = nome
         else: raise ValueError("Nome do Grupo inválido.")
         if descricao != "": self.descricao = descricao

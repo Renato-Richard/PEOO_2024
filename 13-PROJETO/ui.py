@@ -105,13 +105,7 @@ class UI:
                     break
     @staticmethod
     def inserirMembro():
-        grupo = {}
-        while True:
-            idGrupo = int(input("Insira o id do grupo: "))
-            if idGrupo == 0:
-                break
-            if idGrupo not in Membros:
-                Membros[idGrupo] = []
+        idGrupo = int(input("Insira o id do grupo: "))
         idContato = int(input("Qual o id do contato? "))
         nome = input("Insira o nome do membro: ")
         usuario = input("Insira um nome de usuário: ")
