@@ -1,6 +1,6 @@
 import math
 class Retangulo:
-    def __init__(self, b, h):
+    def __init__(self, b: float, h: float):
         self.__b = b
         self.__h = h
     def __str__(self):
