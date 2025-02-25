@@ -1,0 +1,4 @@
+def update_updated_at():
+        pass
+
+Este método está sendo usado em todas as classes.

@@ -1,3 +1,6 @@
+class band_data_persistence():
+    pass
+
 # import streamlit as st
 # import pandas as pd
 # from views import View
