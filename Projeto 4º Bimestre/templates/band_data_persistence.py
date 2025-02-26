@@ -1,23 +1,13 @@
+import streamlit as st
 class band_data_persistence():
-    pass
-
-# import streamlit as st
-# import pandas as pd
-# from views import View
-# import time
-
-# class AbrirContaUI:
-#     def main():
-#         st.header("Abrir Conta no Sistema")
-#         AbrirContaUI.inserir()
-
-#     def inserir():
-#         nome = st.text_input("Informe o nome")
-#         email = st.text_input("Informe o e-mail")
-#         fone = st.text_input("Informe o fone")
-#         senha = st.text_input("Informe a senha", type="password")
-#         if st.button("Inserir"):
-#             View.cliente_inserir(nome, email, fone, senha)
-#             st.success("Conta criada com sucesso")
-#             time.sleep(2)
-#             st.rerun()
+    def main():
+        st.title("Cadastrar bandas: ")
+        st.text_input("Nome da banda:")
+        st.text_input("Gênero musical:")
+        st.text_input("Descrição da banda:")
+        st.date_input("Data de formação:")
+        st.number_input("Quantidade de membros:", min_value=1, step=1, format="%d")
+        st.number_input("Quantidade de apresentações:", min_value=0, step=1, format="%d")
+        st.write("Este é um valor inicial, ele será atualizado automaticamente.")
+        st.text_input("Estado atual da banda:")
+        st.write("Aqui vem a última aualização")

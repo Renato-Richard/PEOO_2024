@@ -1,5 +1,5 @@
 import streamlit as st
-class city_data_persistence():
+class ticket_data_persistence():
     def main():
         st.title("Cadastrar bandas: ")
         st.text_input("Nome da banda:")
