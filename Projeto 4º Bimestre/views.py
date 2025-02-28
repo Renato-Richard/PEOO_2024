@@ -78,10 +78,10 @@ class View:
     def authenticate_user(email, password):
         for c in View.read_user():
             if c._User__email == email and c._User__password == password:
-                return {"id" : c.id, "nome" : c._User__user_name }
+                return {"id" : c.id, "user_name" : c._User__user_name }
         return None
     def authenticate_admin(email, password):
         for c in View.read_user():
             if c._User__email == email and c._User__password == password:
-                return {"id" : c.id, "nome" : c._User__user_name }
+                return {"id" : c.id, "user_name" : c._User__user_name }
         return None
