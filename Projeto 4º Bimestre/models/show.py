@@ -35,8 +35,6 @@ class Show:
         pass
     def update_sold_tickets():
         pass
-    def search_shows_by_band():
-        pass
     def update_updated_at():
         pass
     def __str__(self):
@@ -44,13 +42,13 @@ class Show:
 class Shows(CRUD):
     @classmethod
     def save(cls):
-        with open("cities.json", mode="w") as file:
+        with open("json/shows.json", mode="w") as file:
             json.dump(cls.objetos, file, default = vars)
     @classmethod
     def open(cls):
         cls.objetos = []
         try:
-            with open("cities.json", mode="r") as file:
+            with open("json/shows.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
                 s = Show(obj["show_id"], obj["band_id"], obj["city_id"], obj["description_of_show"], obj["show_date"], obj["show_time"], obj["is_virtual"], obj["available_tickets"], obj["ticket_price"], obj["sold_tickets"], obj["show_status"], obj["updated_at"])

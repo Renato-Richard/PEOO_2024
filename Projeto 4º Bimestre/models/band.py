@@ -37,16 +37,16 @@ class Band:
 class Bands(CRUD):
     @classmethod
     def save(cls):
-        with open("bands.json", mode="w") as file:
+        with open("json/bands.json", mode="w") as file:
             json.dump(cls.objetos, file, default = vars)
     @classmethod
     def open(cls):
         cls.objetos = []
         try:
-            with open("bands.json", mode="r") as file:
+            with open("json/bands.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
-                b = Band(obj["band_id"], obj["band_name"], obj["music_genre"], obj["description"], obj["formed_date"], obj["members_count"], obj["total_shows_by_band"], obj["band_status"], obj["updated_at"])
+                b = Band(obj["_Band__band_id"], obj["_Band__band_name"], obj["_Band__music_genre"], obj["_Band__description"], obj["_Band__formed_date"], obj["_Band__members_count"], obj["_Band__total_shows_by_band"], obj["_Band__band_status"], obj["_Band__updated_at"])
             cls.objetos.append(b)
         except FileNotFoundError:
             pass

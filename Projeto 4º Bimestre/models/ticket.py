@@ -16,13 +16,13 @@ class Ticket:
 class Tickets(CRUD):
     @classmethod
     def save(cls):
-        with open("tickets.json", mode="w") as file:
+        with open("json/tickets.json", mode="w") as file:
             json.dump(cls.objetos, file, default = vars)
     @classmethod
     def open(cls):
         cls.objetos = []
         try:
-            with open("tickets.json", mode="r") as file:
+            with open("json/tickets.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
                 t = Tickets(obj["ticket_id"])

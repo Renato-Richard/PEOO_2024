@@ -16,13 +16,13 @@ class User:
 class Users(CRUD):
     @classmethod
     def save(cls):
-        with open("users.json", mode="w") as file:
+        with open("json/users.json", mode="w") as file:
             json.dump(cls.objetos, file, default = vars)
     @classmethod
     def open(cls):
         cls.objetos = []
         try:
-            with open("users.json", mode="r") as file:
+            with open("json/users.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
                 u = User(obj["user_id"])

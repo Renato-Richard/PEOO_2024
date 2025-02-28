@@ -24,13 +24,13 @@ class City:
 class Cities(CRUD):
     @classmethod
     def save(cls):
-        with open("cities.json", mode="w") as file:
+        with open("json/cities.json", mode="w") as file:
             json.dump(cls.objetos, file, default = vars)
     @classmethod
     def open(cls):
         cls.objetos = []
         try:
-            with open("cities.json", mode="r") as file:
+            with open("json/cities.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
                 c = City(obj["id"], obj["city_name"], obj["total_shows_by_city"], obj["updated_at"])
