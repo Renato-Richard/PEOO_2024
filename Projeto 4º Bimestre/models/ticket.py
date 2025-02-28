@@ -1,8 +1,8 @@
 import json
 from models.crud import CRUD
 class Ticket:
-    def __init__(self, ticket_id, user_id, show_id, ticket_price, is_used, updated_at):
-        self.__ticket_id = ticket_id
+    def __init__(self, id, user_id, show_id, ticket_price, is_used, updated_at):
+        self.id = id
         self.__user_id = user_id
         self.__show_id = show_id
         self.__ticket_price = ticket_price
@@ -10,9 +10,15 @@ class Ticket:
     def ticket_limit(self):
         pass
     def to_json(self):
-        pass
+        dic = {}
+        dic["id"] = self.id
+        dic["user_id"] =  self.__user_id
+        dic["show_id"] = self.__show_id
+        dic["ticket_price"] = self.__ticket_price
+        dic["updated_at"] = self.__updated_at.datetime().strftime("%d/%m/%Y %H:%M")
+        return dic
     def __str__(self):
-        return f"{self.__ticket_id} - {self.__user_id} - {self.__show_id} - {self.__ticket_price} - {self.__is_used} - {self.__updated_at}"
+        return f"{self.id} - {self.__user_id} - {self.__show_id} - {self.__ticket_price} - {self.__is_used} - {self.__updated_at}"
 class Tickets(CRUD):
     @classmethod
     def save(cls):

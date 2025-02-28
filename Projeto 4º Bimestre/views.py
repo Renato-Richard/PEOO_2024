@@ -47,8 +47,8 @@ class View:
         s = Show(show_id, "", "", "", "", "", "", "", "", "", "", "")
         Shows.delete(s)
 
-    def create_user():
-        u = User(0)
+    def create_user(user_name, email, password, birth_date):
+        u = User(0, user_name, email, password, birth_date)
         Users.create(u)
     def read_user():
         return Users.read()
@@ -77,11 +77,11 @@ class View:
 
     def authenticate_user(email, password):
         for c in View.read_user():
-            if c.email == email and c.senha == password:
-                return {"id" : c.id, "nome" : c.nome }
+            if c._User__email == email and c._User__password == password:
+                return {"id" : c.id, "nome" : c._User__user_name }
         return None
     def authenticate_admin(email, password):
         for c in View.read_user():
-            if c.email == email and c.senha == password:
-                return {"id" : c.id, "nome" : c.nome }
+            if c._User__email == email and c._User__password == password:
+                return {"id" : c.id, "nome" : c._User__user_name }
         return None
