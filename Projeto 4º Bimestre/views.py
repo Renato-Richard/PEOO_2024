@@ -74,3 +74,14 @@ class View:
     def delete_ticket(ticket_id):
         t = Ticket(ticket_id)
         Tickets.delete(t)
+
+    def authenticate_user(email, password):
+        for c in View.read_user():
+            if c.email == email and c.senha == password:
+                return {"id" : c.id, "nome" : c.nome }
+        return None
+    def authenticate_admin(email, password):
+        for c in View.read_user():
+            if c.email == email and c.senha == password:
+                return {"id" : c.id, "nome" : c.nome }
+        return None
