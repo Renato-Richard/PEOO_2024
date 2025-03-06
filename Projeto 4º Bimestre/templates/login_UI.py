@@ -4,17 +4,16 @@ import streamlit as st
 from templates.user_UI import User_UI
 class Login_UI():
     def main():
-        st.header("Entrar:")
         if "page" not in st.session_state:
-            st.session_state["page"] = "login"  # Página inicial é o login
-
+            st.session_state["page"] = "login"
         if st.session_state["page"] == "login":
-            Login_UI.create()  # Exibe a página de login
+            Login_UI.create()
         elif st.session_state["page"] == "user":
-            User_UI.main()  # Exibe o menu do usuário
+            User_UI.main()
         elif st.session_state["page"] == "admin":
-            User_UI.main()  # Exibe o menu do administrador
+            User_UI.main()
     def create():
+        st.header("Entrar:")
         email = st.text_input("E-mail")
         password = st.text_input("Senha", type="password")
         if st.button("Entrar"):
@@ -28,7 +27,7 @@ class Login_UI():
                 st.session_state["type"] = "user"
                 st.session_state["page"] = "user"
                 st.success("Bem-vindo")
-            elif a != None:    
+            elif a != None:
                 st.session_state["id"] = a["id"]
                 st.session_state["user_name"] = a["user_name"]
                 st.session_state["type"] = "admin"

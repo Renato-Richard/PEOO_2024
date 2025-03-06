@@ -23,6 +23,7 @@ class IndexUI():
         opt = st.sidebar.selectbox("Entrar", ["Criar conta", "Fazer login"])
         if opt == "Criar conta": Create_account_UI.main()
         if opt == "Fazer login": Login_UI.main()
+        st.rerun()
     def main():
        if "type" in st.session_state:
         if st.session_state["type"] == "admin":
