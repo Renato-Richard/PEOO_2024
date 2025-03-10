@@ -1,10 +1,10 @@
+import streamlit as st
 from views import View
 import time
-import streamlit as st
-class Create_account_UI():
+class CreateAccountUI():
     def main():
         st.header("Criar conta")
-        Create_account_UI.create()
+        CreateAccountUI.create()
     def create():
         name = st.text_input("Nome:")
         email = st.text_input("E-mail:")

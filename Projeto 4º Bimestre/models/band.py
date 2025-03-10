@@ -1,6 +1,6 @@
 from models.crud import CRUD
 import json
-from datetime import datetime
+from datetime import datetime, date
 class Band:
     def __init__(self, id: int, band_name: str, music_genre: str, description: str, formed_date: str, members_count: int, total_shows_by_band: int, band_status: str, updated_at):
         self.id = id
@@ -18,11 +18,17 @@ class Band:
         dic["band_name"] =  self.__band_name
         dic["music_genre"] = self.__music_genre
         dic["description"] = self.__description
-        dic["formed_date"] = self.__formed_date.data().strftime("%d/%m/%Y")
+        if isinstance(self.__formed_date, date):
+            dic["formed_date"] = self.__formed_date.strftime("%d/%m/%Y")
+        else:
+            dic["formed_date"] = self.__formed_date
         dic["members_count"] = self.__members_count
         dic["total_shows_by_band"] = self.__total_shows_by_band
         dic["band_status"] = self.__band_status
-        dic["updated_at"] = self.__updated_at.datetime().strftime("%d/%m/%Y %H:%M")
+        if isinstance(self.__updated_at, datetime):
+            dic["updated_at"] = self.__updated_at.strftime("%d/%m/%Y %H:%M")
+        else:
+            dic["updated_at"] = self.__updated_at
         return dic
     def years_in_the_industry(self):
         return datetime.now().year - self.__formed_date.year
@@ -38,7 +44,7 @@ class Bands(CRUD):
     @classmethod
     def save(cls):
         with open("json/bands.json", mode="w") as file:
-            json.dump(cls.objetos, file, default = vars)
+            json.dump([obj.to_json() for obj in cls.objetos], file, default=str, indent=4)
     @classmethod
     def open(cls):
         cls.objetos = []
@@ -46,7 +52,7 @@ class Bands(CRUD):
             with open("json/bands.json", mode="r") as file:
                 text = json.load(file)
             for obj in text:   
-                b = Band(obj["id"], obj["_Band__band_name"], obj["_Band__music_genre"], obj["_Band__description"], obj["_Band__formed_date"], obj["_Band__members_count"], obj["_Band__total_shows_by_band"], obj["_Band__band_status"], obj["_Band__updated_at"])
+                b = Band(obj["id"], obj["band_name"], obj["music_genre"], obj["description"], obj["formed_date"], obj["members_count"], obj["total_shows_by_band"], obj["band_status"], obj["updated_at"])
             cls.objetos.append(b)
         except FileNotFoundError:
             pass

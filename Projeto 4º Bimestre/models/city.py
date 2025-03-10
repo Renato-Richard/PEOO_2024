@@ -1,5 +1,6 @@
 import json
 from models.crud import CRUD
+from datetime import datetime
 class City:
     def __init__(self, id: int, city_name: str, total_shows_by_city: int, updated_at):
         self.id = id
@@ -11,7 +12,10 @@ class City:
         dic["id"] = self.id
         dic["city_name"] =  self.__city_name
         dic["total_shows_by_city"] = self.__total_shows_by_city
-        dic["updated_at"] = self.__updated_at.datetime().strftime("%d/%m/%Y %H:%M")
+        if isinstance(self.__updated_at, datetime):
+            dic["updated_at"] = self.__updated_at.strftime("%d/%m/%Y %H:%M")
+        else:
+            dic["updated_at"] = self.__updated_at
         return dic
     def update_total_shows_by_city():
         pass
@@ -25,7 +29,7 @@ class Cities(CRUD):
     @classmethod
     def save(cls):
         with open("json/cities.json", mode="w") as file:
-            json.dump(cls.objetos, file, default = vars)
+            json.dump([obj.to_json() for obj in cls.objetos], file, default=str, indent=4)
     @classmethod
     def open(cls):
         cls.objetos = []

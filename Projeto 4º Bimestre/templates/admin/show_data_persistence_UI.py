@@ -1,5 +1,5 @@
 import streamlit as st
-class user_data_persistence_UI():
+class ShowDataPersistenceUI():
     def main():
         st.title("Cadastrar bandas: ")
         st.text_input("Nome da banda:")
