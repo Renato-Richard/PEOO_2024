@@ -53,6 +53,6 @@ class Bands(CRUD):
                 text = json.load(file)
             for obj in text:   
                 b = Band(obj["id"], obj["band_name"], obj["music_genre"], obj["description"], obj["formed_date"], obj["members_count"], obj["total_shows_by_band"], obj["band_status"], obj["updated_at"])
-            cls.objetos.append(b)
+                cls.objetos.append(b)
         except FileNotFoundError:
             pass

@@ -62,6 +62,6 @@ class Shows(CRUD):
                 text = json.load(file)
             for obj in text:   
                 s = Show(obj["id"], obj["band_id"], obj["city_id"], obj["description_of_show"], obj["show_date"], obj["show_time"], obj["is_virtual"], obj["available_tickets"], obj["ticket_price"], obj["sold_tickets"], obj["show_status"], obj["updated_at"])
-            cls.objetos.append(s)
+                cls.objetos.append(s)
         except FileNotFoundError:
             pass

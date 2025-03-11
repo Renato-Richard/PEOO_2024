@@ -23,7 +23,7 @@ class View:
         c = City(0, city_name, total_shows_by_city, updated_at)
         Cities.create(c)
     def read_city():
-        return Cities.read() 
+        return Cities.read()
     def read_ID_city(city_id):
         return Cities.read_ID(city_id)
     def update_city(city_id, city_name, total_shows_by_city):

@@ -32,6 +32,6 @@ class Tickets(CRUD):
                 text = json.load(file)
             for obj in text:   
                 t = Tickets(obj["ticket_id"])
-            cls.objetos.append(t)
+                cls.objetos.append(t)
         except FileNotFoundError:
             pass

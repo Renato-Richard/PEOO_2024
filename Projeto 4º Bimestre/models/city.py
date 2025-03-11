@@ -38,6 +38,6 @@ class Cities(CRUD):
                 text = json.load(file)
             for obj in text:   
                 c = City(obj["id"], obj["city_name"], obj["total_shows_by_city"], obj["updated_at"])
-            cls.objetos.append(c)
+                cls.objetos.append(c)
         except FileNotFoundError:
             pass
