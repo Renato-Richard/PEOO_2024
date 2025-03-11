@@ -45,8 +45,6 @@ class Show:
         pass
     def update_sold_tickets():
         pass
-    def update_updated_at():
-        pass
     def __str__(self):
         return f"{self.id} - {self.__band_id} - {self.__city_id} - {self.__description_of_show} - {self.__show_date} - {self.__show_time} - {self.__is_virtual} - {self.__available_tickets} - {self.__ticket_price} - {self.__sold_tickets} - {self.__show_status} - {self.__updated_at}"
 class Shows(CRUD):

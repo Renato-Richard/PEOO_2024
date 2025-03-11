@@ -48,7 +48,9 @@ class IndexUI():
         st.write(f"Página atual: {st.session_state.get('page')}")
     def admin_menu():          
         opt = st.sidebar.selectbox("Painel do administrador:", ["Cadastro de Bandas", "Cadastro de Cidades", "Cadastro de Shows"], key="admin_menu")
-        if opt == "Cadastro de Bandas": BandDataPersistenceUI.main()
+        if opt == "Cadastro de Bandas":
+            BandDataPersistenceUI.search()
+            BandDataPersistenceUI.main()
         if opt == "Cadastro de Cidades": CityDataPersistenceUI.main()
         if opt == "Cadastro de Shows": ShowDataPersistenceUI.main()
 IndexUI.main()

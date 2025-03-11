@@ -21,8 +21,6 @@ class City:
         pass
     def search_shows_by_city():
         pass
-    def update_updated_at():
-        pass
     def __str__(self):
         return f"{self.id} - {self.__city_name} - {self.__total_shows_by_city} - {self.__updated_at}"
 class Cities(CRUD):
