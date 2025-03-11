@@ -12,5 +12,19 @@
         "sold_tickets": 0,
         "show_status": "Cancelado",
         "updated_at": "11/03/2025 19:28"
+    },
+    {
+        "id": 2,
+        "band_id": 3,
+        "city_id": 0,
+        "description_of_show": "alguma coisa",
+        "show_date": "13/03/2025",
+        "show_time": "01:30",
+        "is_virtual": true,
+        "available_tickets": 3404343,
+        "ticket_price": "R$850,00",
+        "sold_tickets": 3000,
+        "show_status": "Ativo",
+        "updated_at": "11/03/2025 20:21"
     }
 ]

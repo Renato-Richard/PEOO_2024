@@ -4,5 +4,17 @@
         "city_name": "Natal",
         "total_shows_by_city": 91030394,
         "updated_at": "11/03/2025 19:25"
+    },
+    {
+        "id": 2,
+        "city_name": "Natal",
+        "total_shows_by_city": 2,
+        "updated_at": "11/03/2025 20:15"
+    },
+    {
+        "id": 4,
+        "city_name": "Arez",
+        "total_shows_by_city": 7000,
+        "updated_at": "11/03/2025 20:20"
     }
 ]

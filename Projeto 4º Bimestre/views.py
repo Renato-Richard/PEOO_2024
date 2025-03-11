@@ -118,3 +118,8 @@ class View:
         bands = View.read_band()
         filtered_shows = [show for show in bands if band_name.lower() in show._Band__band_name.lower()]
         return filtered_shows
+    @staticmethod
+    def search_shows_by_city(city_name):
+        bands = View.read_city()
+        filtered_shows = [show for show in bands if city_name.lower() in show._City__city_name.lower()]
+        return filtered_shows

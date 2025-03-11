@@ -13,7 +13,8 @@ from templates.user.explore_cities_UI import ExploreCitiesUI
 from templates.user.my_tickets_UI import MyTickets
 class IndexUI():
     def main():
-        IndexUI.sidebar()
+        if st.sidebar.button("Sair"):
+                st.session_state.clear()
         IndexUI.page_style()
         if "page" in st.session_state:
             if st.session_state["page"] == "user_menu": IndexUI.user_menu()
@@ -29,8 +30,6 @@ class IndexUI():
                 IndexUI.user_menu() 
             elif admin:
                 IndexUI.admin_menu()
-            if st.sidebar.button("Sair"):
-                st.session_state.clear()
             st.rerun()
     def page_style():
         st.sidebar.markdown("# Agenda Musical")

@@ -100,5 +100,3 @@ class BandDataPersistenceUI():
                     st.write(f"ID: {show.id}, Banda: {show._Band__band_name}")
             else:
                 st.write(f"Nenhum show encontrado para a banda '{band_name}'.")
-    if __name__ == "__main__":
-        main()

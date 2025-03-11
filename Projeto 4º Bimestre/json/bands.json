@@ -20,5 +20,16 @@
         "total_shows_by_band": 90000,
         "band_status": "2025-03-11 19:25:03.383453",
         "updated_at": ""
+    },
+    {
+        "id": 3,
+        "band_name": "BTS",
+        "music_genre": "kpop",
+        "description": "grupo coreano",
+        "formed_date": "08/03/2025",
+        "members_count": 7,
+        "total_shows_by_band": 8000,
+        "band_status": "Suspensa",
+        "updated_at": "11/03/2025 20:18"
     }
 ]
