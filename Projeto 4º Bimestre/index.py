@@ -29,7 +29,7 @@ class IndexUI():
                 IndexUI.user_menu() 
             elif admin:
                 IndexUI.admin_menu()
-            if st.sidebar.button("Sair"):  # Aqui o botão "Sair" está dentro do escopo correto
+            if st.sidebar.button("Sair"):
                 st.session_state.clear()
             st.rerun()
     def page_style():

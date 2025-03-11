@@ -61,8 +61,8 @@ class View:
         s = Show(show_id, "", "", "", "", "", "", "", "", "", "", "")
         Shows.delete(s)
     @staticmethod
-    def create_user(user_name, email, password, birth_date):
-        u = User(0, user_name, email, password, birth_date)
+    def create_user(user_name, email, password, birth_date, updated_at):
+        u = User(0, user_name, email, password, birth_date, updated_at)
         Users.create(u)
     @staticmethod
     def read_user():
