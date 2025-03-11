@@ -1,7 +1,8 @@
 import json
+from datetime import datetime, date, time
 from models.crud import CRUD
 class Show:
-    def __init__(self, show_id: int, band_id: int, city_id: int, description_of_show: str, show_date: str, show_time: str, is_virtual: bool, available_tickets: int, ticket_price: str, sold_tickets: int, show_status: str, updated_at):
+    def __init__(self, id: int, band_id: int, city_id: int, description_of_show: str, show_date: date, show_time: time, is_virtual: bool, available_tickets: int, ticket_price: str, sold_tickets: int, show_status: str, updated_at: datetime):
         self.id = id
         self.__band_id = band_id
         self.__city_id = city_id
@@ -20,14 +21,23 @@ class Show:
         dic["band_id"] =  self.__band_id
         dic["city_id"] = self.__city_id
         dic["description_of_show"] = self.__description_of_show
-        dic["show_date"] = self.__show_date.data().strftime("%d/%m/%Y")
-        dic["show_time"] = self.__show_time.date().strftime("%H:%M")
+        if isinstance(self.__show_date, date):
+            dic["show_date"] = self.__show_date.strftime("%d/%m/%Y")
+        else:
+            dic["show_date"] = self.__show_date
+        if isinstance(self.__show_time, time):
+            dic["show_time"] = self.__show_time.strftime("%H:%M")
+        else:
+            dic["show_time"] = self.__show_time
         dic["is_virtual"] = self.__is_virtual
         dic["available_tickets"] = self.__available_tickets
         dic["ticket_price"] = self.__ticket_price
         dic["sold_tickets"] = self.__sold_tickets
         dic["show_status"] = self.__show_status
-        dic["updated_at"] = self.__updated_at.datetime().strftime("%d/%m/%Y %H:%M")
+        if isinstance(self.__updated_at, datetime):
+            dic["updated_at"] = self.__updated_at.strftime("%d/%m/%Y %H:%M")
+        else:
+            dic["updated_at"] = self.__updated_at
         return dic
     def update_available_tickets():
         pass
@@ -43,7 +53,7 @@ class Shows(CRUD):
     @classmethod
     def save(cls):
         with open("json/shows.json", mode="w") as file:
-            json.dump(cls.objetos, file, default = vars)
+            json.dump([obj.to_json() for obj in cls.objetos], file, default=str, indent=4)
     @classmethod
     def open(cls):
         cls.objetos = []

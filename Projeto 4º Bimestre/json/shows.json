@@ -1,0 +1,30 @@
+[
+    {
+        "id": 8,
+        "band_id": 0,
+        "city_id": 0,
+        "description_of_show": "carnatal 2024",
+        "show_date": "13/12/2025",
+        "show_time": "23:00",
+        "is_virtual": true,
+        "available_tickets": 600,
+        "ticket_price": "R$160,00",
+        "sold_tickets": 300,
+        "show_status": "Cancelado",
+        "updated_at": "11/03/2025 02:06"
+    },
+    {
+        "id": 9,
+        "band_id": 0,
+        "city_id": 0,
+        "description_of_show": "carnatal 2024",
+        "show_date": "13/12/2025",
+        "show_time": "23:00",
+        "is_virtual": true,
+        "available_tickets": 600,
+        "ticket_price": "R$160,00",
+        "sold_tickets": 300,
+        "show_status": "Cancelado",
+        "updated_at": "11/03/2025 02:06"
+    }
+]

@@ -1,24 +1,24 @@
 [
     {
-        "id": 3,
-        "band_name": "nhhg",
-        "music_genre": "nhnh",
-        "description": "nhnhn",
-        "formed_date": "19/03/2025",
-        "members_count": 65656,
-        "total_shows_by_band": 455,
-        "band_status": "hjj",
-        "updated_at": "10/03/2025 02:30"
+        "id": 9,
+        "band_name": "",
+        "music_genre": "",
+        "description": "",
+        "formed_date": "11/03/2025",
+        "members_count": 1,
+        "total_shows_by_band": 0,
+        "band_status": "Ativa",
+        "updated_at": "11/03/2025 02:07"
     },
     {
-        "id": 4,
-        "band_name": "nhhghjhj",
-        "music_genre": "nhnhhjhj",
-        "description": "nhnhnjhj",
-        "formed_date": "15/03/2025",
-        "members_count": 656567,
-        "total_shows_by_band": 45576,
-        "band_status": "hjjgh",
-        "updated_at": "10/03/2025 02:41"
+        "id": 10,
+        "band_name": "",
+        "music_genre": "",
+        "description": "",
+        "formed_date": "11/03/2025",
+        "members_count": 1,
+        "total_shows_by_band": 0,
+        "band_status": "Ativa",
+        "updated_at": "11/03/2025 02:07"
     }
 ]

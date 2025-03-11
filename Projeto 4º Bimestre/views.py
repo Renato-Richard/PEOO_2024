@@ -32,8 +32,8 @@ class View:
     def delete_city(city_id):
         c = City(city_id, "", "", "")
         Cities.delete(c)
-    def create_show(description_of_show, show_date, show_time, is_virtual, available_tickets, ticket_price, sold_tickets, show_status):
-        s = Show(0, 0, 0, description_of_show, show_date, show_time, is_virtual, available_tickets, ticket_price, sold_tickets, show_status, "")
+    def create_show(description_of_show, show_date, show_time, is_virtual, available_tickets, ticket_price, sold_tickets, show_status, update_at):
+        s = Show(0, 0, 0, description_of_show, show_date, show_time, is_virtual, available_tickets, ticket_price, sold_tickets, show_status, update_at)
         Shows.create(s)
     def read_show():
         return Shows.read()

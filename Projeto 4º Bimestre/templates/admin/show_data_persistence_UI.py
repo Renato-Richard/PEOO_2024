@@ -1,13 +1,24 @@
 import streamlit as st
+from datetime import datetime
+from views import View
+import time
 class ShowDataPersistenceUI():
+    @staticmethod
     def main():
-        st.title("Cadastrar bandas: ")
-        st.text_input("Nome da banda:")
-        st.text_input("Gênero musical:")
-        st.text_input("Descrição da banda:")
-        st.date_input("Data de formação:")
-        st.number_input("Quantidade de membros:", min_value=1, step=1, format="%d")
-        st.number_input("Quantidade de apresentações:", min_value=0, step=1, format="%d")
-        st.write("Este é um valor inicial, ele será atualizado automaticamente.")
-        st.text_input("Estado atual da banda:")
-        st.write("Aqui vem a última aualização")
+        with st.form("shows"):
+            st.markdown("## Cadastrar shows:")
+            description_of_show = st.text_input("Descrição do show:")
+            show_date = st.date_input("Data:")
+            show_time = st.time_input("Hora:")
+            is_virtual = st.radio("Modalidade", ["Presencial", "Virtual"])
+            is_virtual = is_virtual == "Virtual"
+            available_tickets = st.number_input("Ingressos disponíveis:", min_value=0, step=1, format="%d")
+            ticket_price = st.text_input("Valor do ingresso:", placeholder="R$00,00")
+            sold_tickets = st.number_input("Ingressos vendidos:", step=1, format="%d")
+            show_status = st.radio("Estado atual da show:", ["Ativo", "Cancelado", "Suspenso"])
+            updated_at = datetime.now()
+            if st.form_submit_button("Cadastrar show"):
+                    View.create_show(description_of_show, show_date, show_time, is_virtual, available_tickets, ticket_price, sold_tickets, show_status, updated_at)
+                    st.success("O show foi cadastrado!")
+                    time.sleep(2)
+                    st.rerun()

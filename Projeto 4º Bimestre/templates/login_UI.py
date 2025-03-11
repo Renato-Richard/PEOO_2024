@@ -3,7 +3,6 @@ from views import View
 import time
 class LoginUI():
     def main():
-        st.write("DEBUG: LoginUI.main() foi chamado")
         st.header("Entrar:")
         email = st.text_input("E-mail")
         password = st.text_input("Senha", type="password")
@@ -24,6 +23,5 @@ class LoginUI():
                 st.session_state["user_name"] = u["user_name"]
                 st.session_state["type"] = "user"
                 st.session_state["page"] = "user_menu"
-                st.write(f"DEBUG: Redirecionando para {st.session_state['page']}")
                 st.success(f"Bem-vindo, {u['user_name']}!")
                 st.rerun()
