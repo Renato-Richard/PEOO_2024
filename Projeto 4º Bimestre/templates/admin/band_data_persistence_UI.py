@@ -7,6 +7,7 @@ from models.band import Band, Bands
 class BandDataPersistenceUI():
     @staticmethod
     def main():
+        BandDataPersistenceUI.search()
         st.markdown("## Cadastrar bandas:")
         tab1, tab2, tab3, tab4 = st.tabs(["Inserir", "Listar", "Atualizar", "Excluir"])
         with tab1: BandDataPersistenceUI.create()
@@ -43,6 +44,7 @@ class BandDataPersistenceUI():
             '_Band__description': 'Descrição da banda',
             '_Band__formed_date': 'Data de formação',
             '_Band__members_count': 'Quantidade de membros',
+            '_Band__total_shows_by_band': 'Quantidade de shows',
             '_Band__band_status': 'Estado atual da banda',
             '_Band__updated_at': 'Última Atualização',
             }
@@ -88,17 +90,15 @@ class BandDataPersistenceUI():
                     st.rerun()
     @staticmethod
     def search():
-        st.title("Pesquisa de Shows por Banda")
+        st.markdown("## Pesquisa de Shows por Banda:")
         band_name = st.text_input("Digite o nome da banda:")
         if band_name:
-            results = Band.search_shows_by_band(band_name)
+            results = View.search_shows_by_band(band_name)
             if results:
                 st.write(f"Shows encontrados para a banda '{band_name}':")
                 for show in results:
-                    st.write(f"ID: {show['id']}, Banda: {show['band_name']}, Data: {show['date']}, Local: {show['venue']}")
+                    st.write(f"ID: {show.id}, Banda: {show._Band__band_name}")
             else:
                 st.write(f"Nenhum show encontrado para a banda '{band_name}'.")
-        else:
-            st.write("Por favor, digite o nome de uma banda para pesquisar.")
     if __name__ == "__main__":
         main()

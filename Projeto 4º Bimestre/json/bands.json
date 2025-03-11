@@ -1,35 +1,24 @@
 [
     {
-        "id": 9,
-        "band_name": "",
-        "music_genre": "",
-        "description": "",
-        "formed_date": "11/03/2025",
-        "members_count": 1,
-        "total_shows_by_band": 0,
-        "band_status": "Ativa",
-        "updated_at": "11/03/2025 02:07"
-    },
-    {
-        "id": 10,
-        "band_name": "",
-        "music_genre": "",
-        "description": "",
-        "formed_date": "11/03/2025",
-        "members_count": 1,
-        "total_shows_by_band": 0,
-        "band_status": "Ativa",
-        "updated_at": "11/03/2025 02:07"
-    },
-    {
-        "id": 11,
-        "band_name": "BTS",
-        "music_genre": "Kpop",
-        "description": "Lindos",
-        "formed_date": "25/03/2025",
+        "id": 2,
+        "band_name": "Straykids",
+        "music_genre": "kpop",
+        "description": "grupo coreano",
+        "formed_date": "08/03/2025",
         "members_count": 7,
-        "total_shows_by_band": 900000000,
-        "band_status": "Suspensa",
-        "updated_at": "11/03/2025 17:37"
+        "total_shows_by_band": 9000,
+        "band_status": "Ativa",
+        "updated_at": "11/03/2025 19:24"
+    },
+    {
+        "id": 1,
+        "band_name": "BTS",
+        "music_genre": "kpop",
+        "description": "kpop",
+        "formed_date": "28/03/2025",
+        "members_count": 7,
+        "total_shows_by_band": 90000,
+        "band_status": "2025-03-11 19:25:03.383453",
+        "updated_at": ""
     }
 ]

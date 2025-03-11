@@ -34,10 +34,10 @@ class Band:
         return datetime.now().year - self.__formed_date.year
     def update_total_shows_by_band(self):
         return self.__total_shows_by_band
-    def search_shows_by_band(band_name):
-        shows = Bands.open()
-        filtered_shows = [show for show in shows if band_name.lower() in show['band_name'].lower()]
-        return filtered_shows
+    # def search_shows_by_band(band_name):
+    #     bands = View.read_band()
+    #     filtered_shows = [show for show in bands if band_name.lower() in show.__band_name.lower()]
+    #     return filtered_shows
     def __str__(self):
         return f"{self.id} - {self.__band_name} - {self.__music_genre} - {self.__description} - {self.__formed_date} - {self.__members_count} - {self.__total_shows_by_band} - {self.__band_status} - {self.__updated_at}"
 class Bands(CRUD):

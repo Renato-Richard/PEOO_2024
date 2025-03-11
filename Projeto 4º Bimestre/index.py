@@ -7,11 +7,13 @@ from templates.settings_UI import SettingsUI
 from templates.admin.band_data_persistence_UI import BandDataPersistenceUI
 from templates.admin.city_data_persistence_UI import CityDataPersistenceUI
 from templates.admin.show_data_persistence_UI import ShowDataPersistenceUI
+from templates.admin.ticket_data_persistence_UI import TicketDataPersistenceUI
 from templates.user.explore_bands_UI import ExploreBandsUI
 from templates.user.explore_cities_UI import ExploreCitiesUI
 from templates.user.my_tickets_UI import MyTickets
 class IndexUI():
     def main():
+        IndexUI.sidebar()
         IndexUI.page_style()
         if "page" in st.session_state:
             if st.session_state["page"] == "user_menu": IndexUI.user_menu()
@@ -27,10 +29,8 @@ class IndexUI():
                 IndexUI.user_menu() 
             elif admin:
                 IndexUI.admin_menu()
-            IndexUI.sair_do_sistema()
-    def sair_do_sistema():
-        if st.sidebar.button("Sair"):
-            st.session_state.clear()
+            if st.sidebar.button("Sair"):  # Aqui o botão "Sair" está dentro do escopo correto
+                st.session_state.clear()
             st.rerun()
     def page_style():
         st.sidebar.markdown("# Agenda Musical")
@@ -47,10 +47,9 @@ class IndexUI():
         if opt == "Configurações": SettingsUI.main()
         st.write(f"Página atual: {st.session_state.get('page')}")
     def admin_menu():          
-        opt = st.sidebar.selectbox("Painel do administrador:", ["Cadastro de Bandas", "Cadastro de Cidades", "Cadastro de Shows"], key="admin_menu")
-        if opt == "Cadastro de Bandas":
-            BandDataPersistenceUI.search()
-            BandDataPersistenceUI.main()
+        opt = st.sidebar.selectbox("Painel do administrador:", ["Cadastro de Bandas", "Cadastro de Cidades", "Cadastro de Shows", "Inserção de Ingressos"], key="admin_menu")
+        if opt == "Cadastro de Bandas": BandDataPersistenceUI.main()
         if opt == "Cadastro de Cidades": CityDataPersistenceUI.main()
         if opt == "Cadastro de Shows": ShowDataPersistenceUI.main()
+        if opt == "Inserção de Ingressos": TicketDataPersistenceUI.main()
 IndexUI.main()

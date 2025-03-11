@@ -79,8 +79,8 @@ class View:
         u = User(user_id)
         Users.delete(u)
     @staticmethod
-    def create_ticket():
-        t = Ticket(0)
+    def create_ticket(show_id, ticket_price,updated_at):
+        t = Ticket(0, show_id, ticket_price, updated_at)
         Tickets.create(t)
     @staticmethod
     def read_ticket():
@@ -89,8 +89,8 @@ class View:
     def read_ID_ticket(ticket_id):
         return Tickets.read_ID(ticket_id)
     @staticmethod
-    def update_ticket(ticket_id):
-        t = Ticket(ticket_id)
+    def update_ticket(id, show_id, ticket_price,updated_at):
+        t = Ticket(id, show_id, ticket_price, updated_at)
         Tickets.update(t)
     @staticmethod
     def delete_ticket(ticket_id):
@@ -113,3 +113,8 @@ class View:
             if c._User__email == email and c._User__password == password:
                 return {"id" : c.id, "user_name" : c._User__user_name }
         return None
+    @staticmethod
+    def search_shows_by_band(band_name):
+        bands = View.read_band()
+        filtered_shows = [show for show in bands if band_name.lower() in show._Band__band_name.lower()]
+        return filtered_shows
